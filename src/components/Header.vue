@@ -1,6 +1,7 @@
 <template>
   <header>
-    <h1>{{title}}</h1>
+    <!-- NOTEIMPORTANT: Since a titleProp (a String) is a reference type, it will not change the value anywhere else, because we are making a duplicate of it and not using the same reference point as we do in reference types. -->
+    <h1 v-on:click="changeTitle">{{titleProp}}</h1>
   </header>
 </template>
 
@@ -10,6 +11,14 @@ export default {
     return {
       title: "Vue Ninjas"
     };
+  },
+  props: {
+    titleProp: String
+  },
+  methods: {
+    changeTitle() {
+      this.titleProp = "Vue Makengos";
+    }
   }
 };
 </script>

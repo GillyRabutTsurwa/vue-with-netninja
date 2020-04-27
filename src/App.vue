@@ -1,11 +1,15 @@
 <template>
   <div id="app">
     <img class="logo" alt="Vue logo" src="./assets/logo.png" />
-    <HeaderCompo />
+    <HeaderCompo v-bind:titleProp="title" />
     <!-- NOTEIMPORTANT: you have to use v-bind to pass on props to child -->
     <!-- We are passing on the ninjas array to the child Ninjas Component -->
     <NinjaCompo v-bind:ninjasProp="ninjas" />
-    <FooterCompo />
+    <hr />
+    <NinjaCompo v-bind:ninjasProp="ninjas" />
+    <!-- NOTE: Clicking a ninja in one place will delete in both -->
+
+    <FooterCompo v-bind:titleProp="title" />
   </div>
 </template>
 
@@ -29,7 +33,8 @@ export default {
         { name: "Tango", speciality: "Conditionals", show: false },
         { name: "Kami", speciality: "Webpack", show: false },
         { name: "Yoshi", speciality: "Data Diggin", show: false }
-      ]
+      ],
+      title: "Vue Ninjas"
     };
   }
 };
