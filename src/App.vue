@@ -2,7 +2,9 @@
   <div id="app">
     <img class="logo" alt="Vue logo" src="./assets/logo.png" />
     <HeaderCompo />
-    <NinjaCompo />
+    <!-- NOTEIMPORTANT: you have to use v-bind to pass on props to child -->
+    <!-- We are passing on the ninjas array to the child Ninjas Component -->
+    <NinjaCompo v-bind:ninjasProp="ninjas" />
     <FooterCompo />
   </div>
 </template>
@@ -17,6 +19,18 @@ export default {
     HeaderCompo: Header, //NOTE: Can't use header because it's a reserved HTML5 Element Tag.
     NinjaCompo: Ninjas,
     FooterCompo: Footer //NOTE: Same 4 footer. Which is why I used HeaderCompo & FooterCompo respectively.
+  },
+  data() {
+    return {
+      ninjas: [
+        { name: "Ryu", speciality: "Vue Components", show: false },
+        { name: "Crystal", speciality: "HTML Engineering", show: false },
+        { name: "Hitoshi", speciality: "Click Events", show: false },
+        { name: "Tango", speciality: "Conditionals", show: false },
+        { name: "Kami", speciality: "Webpack", show: false },
+        { name: "Yoshi", speciality: "Data Diggin", show: false }
+      ]
+    };
   }
 };
 </script>

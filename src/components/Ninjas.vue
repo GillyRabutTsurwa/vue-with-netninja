@@ -1,7 +1,7 @@
 <template>
   <div id="ninjas">
     <ul class="list-container">
-      <li v-for="(currentNinja, index) in ninjas" v-bind:key="index" class="list-item">
+      <li v-for="(currentNinja, index) in ninjasProp" v-bind:key="index" class="list-item">
         <h2 v-on:click="currentNinja.show = !currentNinja.show">{{currentNinja.name}}</h2>
         <h3 v-if="currentNinja.show">{{currentNinja.speciality}}</h3>
       </li>
@@ -12,16 +12,10 @@
 <script>
 export default {
   data() {
-    return {
-      ninjas: [
-        { name: "Ryu", speciality: "Vue Components", show: false },
-        { name: "Crystal", speciality: "HTML Engineering", show: false },
-        { name: "Hitoshi", speciality: "Click Events", show: false },
-        { name: "Tango", speciality: "Conditionals", show: false },
-        { name: "Kami", speciality: "Webpack", show: false },
-        { name: "Yoshi", speciality: "Data Diggin", show: false }
-      ]
-    };
+    return {};
+  },
+  props: {
+    ninjasProp: Array
   }
 };
 </script>
