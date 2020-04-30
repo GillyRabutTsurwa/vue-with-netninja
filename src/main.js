@@ -3,6 +3,9 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
+//IMPORTANTNOTE: How to make an event bus
+export const bus = new Vue();
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')

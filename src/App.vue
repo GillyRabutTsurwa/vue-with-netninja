@@ -2,7 +2,7 @@
   <div id="app">
     <img class="logo" alt="Vue logo" src="./assets/logo.png" />
     <!-- IMPORTANTNOTE: Here in the parent, we listen to the emitted event like any other click event, with v-on:{eventName} or :{eventName}. Onwards, we usually declare a function with an arguement of ($event), which is the data that we wanted to bring with from the child component. In our case, it was Vue Makengos. -->
-    <HeaderCompo v-bind:titleProp="title" v-on:title-changed="updateTitle($event)" />
+    <HeaderCompo v-bind:titleProp="title" />
     <NinjaCompo v-bind:ninjasProp="ninjas" />
 
     <FooterCompo v-bind:titleProp="title" />
