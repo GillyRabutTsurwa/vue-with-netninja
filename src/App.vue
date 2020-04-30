@@ -1,13 +1,9 @@
 <template>
   <div id="app">
     <img class="logo" alt="Vue logo" src="./assets/logo.png" />
-    <HeaderCompo v-bind:titleProp="title" />
-    <!-- NOTEIMPORTANT: you have to use v-bind to pass on props to child -->
-    <!-- We are passing on the ninjas array to the child Ninjas Component -->
+    <!-- IMPORTANTNOTE: Here in the parent, we listen to the emitted event like any other click event, with v-on:{eventName} or :{eventName}. Onwards, we usually declare a function with an arguement of ($event), which is the data that we wanted to bring with from the child component. In our case, it was Vue Makengos. -->
+    <HeaderCompo v-bind:titleProp="title" v-on:title-changed="updateTitle($event)" />
     <NinjaCompo v-bind:ninjasProp="ninjas" />
-    <hr />
-    <NinjaCompo v-bind:ninjasProp="ninjas" />
-    <!-- NOTE: Clicking a ninja in one place will delete in both -->
 
     <FooterCompo v-bind:titleProp="title" />
   </div>
@@ -20,9 +16,9 @@ import Footer from "./components/Footer";
 export default {
   name: "App",
   components: {
-    HeaderCompo: Header, //NOTE: Can't use header because it's a reserved HTML5 Element Tag.
+    HeaderCompo: Header,
     NinjaCompo: Ninjas,
-    FooterCompo: Footer //NOTE: Same 4 footer. Which is why I used HeaderCompo & FooterCompo respectively.
+    FooterCompo: Footer
   },
   data() {
     return {
@@ -36,6 +32,12 @@ export default {
       ],
       title: "Vue Ninjas"
     };
+  },
+  methods: {
+    //IMPORTANTNOTE: This is the method that has access to the data passed through from the child component for the event. The parametre updatedTitle IS $event arguement that contains the data to pass on to the parent... Vue Makengos
+    updateTitle(updatedTitle) {
+      this.title = updatedTitle;
+    }
   }
 };
 </script>
