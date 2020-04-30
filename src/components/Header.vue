@@ -16,10 +16,7 @@ export default {
     titleProp: String
   },
   methods: {
-    // NOTE: This method will emit an event up to the parent
     changeTitle() {
-      //IMPORTANTNOTE: We use $emit() to run an event up to parent.
-      // first parametre is name of event, second is data we want to pass through
       this.$emit("title-changed", "Vue Makengos");
     }
   }

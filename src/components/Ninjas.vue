@@ -22,6 +22,30 @@ export default {
     deleteNinja() {
       this.ninjasProp.pop();
     }
+  },
+  //NEW: lifecycle hooks
+  beforeCreate() {
+    alert("beforeCreate");
+  },
+  created() {
+    //NOTE: A lot of people go here to fetch data and stuff
+    alert("created");
+  },
+  beforeMount() {
+    alert("beforeMount");
+  },
+  mounted() {
+    // NOTE: good place to manipulate the DOM once mounted
+    alert("mounted");
+  },
+  beforeUpdate() {
+    // NOTE: run before a change is updated in the DOM
+    alert("beforeUpdate");
+  },
+  updated() {
+    // NOTE: runs after the DOM is updated and re-rendered
+    // good for manipulating DOM once updated
+    alert("updated");
   }
 };
 </script>
