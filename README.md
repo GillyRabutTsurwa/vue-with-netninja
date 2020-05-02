@@ -1,24 +1,5 @@
 # netninja-vuejs-playlist
 
-## Project setup
-```
-npm install
-```
+## Note à soi
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Tout le code pour comprendre les fundamentales de VueJS peut être trouver dans le dossier **pre-vue-cli**. Ce dossier ne sera pas ajouté sous GitHub. Quand-même, c'est un bon référence quand tu es confu
