@@ -1,31 +1,40 @@
 <template>
   <div id="app">
     <img class="logo" alt="Vue logo" src="./assets/logo.png" />
-    <SlotDemo>
-      <h2 slot="titleSlot">{{slotTitle}}</h2>
-      <p slot="textSlot">Pinchi ma pinchi</p>
-    </SlotDemo>
-    <hr />
-    <FormHelper />
+    <button
+      @click="changeForm"
+    >{{component === "FormOne" ? "Change To Form 2" : "Change To Form 1"}}</button>
+    <!-- NEW component tag -->
+    <!-- component vue "element" has the is attribute which looks for a value that equates to the desired form name to be rendered. The value have to equate to the component name(s) -->
+    <!-- NEW keep alive tag. keeps the component alive and hidden (does not destroy it) when we dynamically change to another component. This is especially useful cause we can switch between the forms and the info in the inputs will be preserved -->
+    <!-- NOTE: Shaun's definition keep alive tells component: Do not destroy the component (its data etc) when we switch to a new one -->
+    <!-- NOTE: definition of keep alive according to VSCode: When wrapped around a dynamic component, <keep-alive> caches the inactive component instances without destroying them. -->
+    <keep-alive>
+      <component v-bind:is="component"></component>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-import SlotDemo from "./components/SlotDemo";
-import FormHelper from "./components/FormHelper";
+import FormOne from "./components/FormOne";
+import FormTwo from "./components/FormTwo";
 export default {
   name: "App",
   data() {
     return {
-      //IMPORTANTNOTE: If we want to make our slots dynamic, we must use them where the dynamic slots are initialised (in our case the app component).
-      //HINT: where you are NOT using the slot tags to define them like this....
-      // <slot></slot>
-      slotTitle: "Je suis un titre de slot dynamique"
+      component: "FormOne"
     };
   },
   components: {
-    SlotDemo: SlotDemo,
-    FormHelper: FormHelper
+    FormOne: FormOne,
+    FormTwo: FormTwo
+  },
+  methods: {
+    changeForm() {
+      this.component === "FormOne"
+        ? (this.component = "FormTwo")
+        : (this.component = "FormOne");
+    }
   }
 };
 </script>
@@ -46,5 +55,9 @@ export default {
   height: 1.5em;
   top: 1em;
   left: 1em;
+}
+
+button {
+  cursor: pointer;
 }
 </style>
