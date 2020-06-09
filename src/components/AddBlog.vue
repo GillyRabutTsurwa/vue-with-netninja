@@ -21,6 +21,20 @@
         <input type="checkbox" id="akinde" value="akinde" v-model="blog.categoriesArr" />
       </div>
     </div>
+    <div class="option-select">
+      <!-- I understand
+      we bind the value of our select to a variable called blog.loFiChannel
+      -->
+      <select v-model="blog.loFiChannel">
+        <!-- THEN, we dynamically create some options using an array and display them out. The name of the option (based on the array) is what the value of blog.loFiChannel will be
+        blog.loFiChannel looks for what is selected in the array of options and whatever is selected will be the value of the variable
+        -->
+        <option
+          v-for="(currentChannel, index) in loFiChannels"
+          v-bind:key="index"
+        >{{currentChannel}}</option>
+      </select>
+    </div>
     <div class="preview">
       <div class="preview__title">
         <p>
@@ -56,12 +70,20 @@ export default {
       blog: {
         title: "",
         content: "",
-        categoriesArr: []
-      }
+        categoriesArr: [],
+        loFiChannel: "STEEZY"
+      },
+      loFiChannels: [
+        "STEEZY",
+        "Axian",
+        "EmotionalTokyo",
+        "ChilledCow",
+        "Lo-Fi Girl"
+      ]
     };
   },
   updated() {
-    console.log(this.blog.categoriesArr);
+    console.log(`Current value of loFiChannel is ${this.blog.loFiChannel}`);
   }
 };
 </script>
