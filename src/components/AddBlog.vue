@@ -7,6 +7,20 @@
       <label for="content">Blog Content:</label>
       <textarea name id="content" v-model.lazy="blog.content"></textarea>
     </form>
+    <div class="checkboxes">
+      <div class="checkboxes__label-input">
+        <label for="pinchi">Pinchi</label>
+        <input type="checkbox" id="pinchi" value="pinchi" v-model="blog.categoriesArr" />
+      </div>
+      <div class="checkboxes__label-input">
+        <label for="panna" value>Panna</label>
+        <input type="checkbox" id="panna" value="panna" v-model="blog.categoriesArr" />
+      </div>
+      <div class="checkboxes__label-input">
+        <label for="akinde">Akinde</label>
+        <input type="checkbox" id="akinde" value="akinde" v-model="blog.categoriesArr" />
+      </div>
+    </div>
     <div class="preview">
       <div class="preview__title">
         <p>
@@ -20,6 +34,17 @@
         </p>
         <p>{{blog.content}}</p>
       </div>
+      <div class="preview__categories">
+        <p>
+          <strong>Blog Categories:</strong>
+        </p>
+        <ul>
+          <li
+            v-for="(currentCategory, index) in blog.categoriesArr"
+            v-bind:key="index"
+          >{{currentCategory}}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -30,9 +55,13 @@ export default {
     return {
       blog: {
         title: "",
-        content: ""
+        content: "",
+        categoriesArr: []
       }
     };
+  },
+  updated() {
+    console.log(this.blog.categoriesArr);
   }
 };
 </script>
@@ -48,6 +77,17 @@ form,
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.checkboxes {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3em;
+  margin: 1.5em 0;
+}
+
+.checkboxes label {
+  margin-right: 0.25em;
 }
 
 .preview {
