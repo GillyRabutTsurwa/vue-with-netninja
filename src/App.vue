@@ -22,6 +22,7 @@ export default {
   name: "App",
   data() {
     return {
+      // notice that the value of the component variable is the exact name of the Component. This also applies of the component you want to switch to.
       component: "FormOne"
     };
   },
