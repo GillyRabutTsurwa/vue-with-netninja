@@ -1,9 +1,10 @@
 <template>
   <div id="show-blogs">
-    <h1>All Blog Articles</h1>
+    <h1 v-rainbow:auto>All Blog Articles</h1>
     <div v-for="(currentBlog, index) in blogsArr" v-bind:key="index" class="single-blog">
-      <h2>{{currentBlog.title}}</h2>
-      <article>{{currentBlog.body}}</article>
+      <!-- NOTE: Filters do not change the data itself, they simply change the output of the data -->
+      <h2 v-rainbow>{{currentBlog.title | toUpperCase}}</h2>
+      <article>{{currentBlog.body | snippet}}</article>
     </div>
   </div>
 </template>

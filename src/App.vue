@@ -17,8 +17,7 @@ export default {
   components: {
     // AddBlog: AddBlog,
     Blogs: ShowBlogs
-  },
-  methods: {}
+  }
 };
 </script>
 
