@@ -1,10 +1,16 @@
 <template>
   <div id="show-blogs">
     <h1 v-rainbow:auto>All Blog Articles</h1>
-    <div v-for="(currentBlog, index) in blogsArr" v-bind:key="index" class="single-blog">
-      <!-- NOTE: Filters do not change the data itself, they simply change the output of the data -->
-      <h2 v-rainbow>{{currentBlog.title | toUpperCase}}</h2>
-      <article>{{currentBlog.body | snippet}}</article>
+    <input type="text" v-model="search" placeholder="Search For Blogs" />
+    <div v-if="filteredBlogsArr.length > 0">
+      <div v-for="(currentBlog, index) in filteredBlogsArr" v-bind:key="index" class="single-blog">
+        <!-- NOTE: Filters do not change the data itself, they simply change the output of the data -->
+        <h2 v-rainbow>{{currentBlog.title | toUpperCase}}</h2>
+        <article>{{currentBlog.body | snippet}}</article>
+      </div>
+    </div>
+    <div v-else>
+      <p style="font-size: 3em">¯\_(ツ)_/¯</p>
     </div>
   </div>
 </template>
@@ -14,7 +20,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      blogsArr: []
+      blogsArr: [],
+      search: ""
     };
   },
   methods: {
@@ -30,6 +37,13 @@ export default {
       } catch (err) {
         console.log(`Error: ${err}`);
       }
+    }
+  },
+  computed: {
+    filteredBlogsArr: function() {
+      return this.blogsArr.filter(currentBlog => {
+        return currentBlog.title.match(this.search);
+      });
     }
   },
   created() {
