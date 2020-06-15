@@ -3,12 +3,14 @@
     <img class="logo" alt="Vue logo" src="./assets/logo.png" />
     <!-- <AddBlog /> -->
     <Blogs />
+    <ListBlogs />
   </div>
 </template>
 
 <script>
 // import AddBlog from "./components/AddBlog";
 import ShowBlogs from "./components/ShowBlogs";
+import ListBlogs from "./components/ListBlogs";
 export default {
   name: "App",
   data() {
@@ -16,7 +18,8 @@ export default {
   },
   components: {
     // AddBlog: AddBlog,
-    Blogs: ShowBlogs
+    Blogs: ShowBlogs,
+    ListBlogs: ListBlogs
   }
 };
 </script>

@@ -1,12 +1,11 @@
 <template>
   <div id="show-blogs">
-    <h1 v-rainbow:auto>All Blog Articles</h1>
+    <h1 v-rainbow:auto>List Blog Titles</h1>
     <input type="text" v-model="search" placeholder="Search For Blogs" />
     <div v-if="filteredBlogsArr.length > 0">
       <div v-for="(currentBlog, index) in filteredBlogsArr" v-bind:key="index" class="single-blog">
         <!-- NOTE: Filters do not change the data itself, they simply change the output of the data -->
         <h2 v-rainbow>{{currentBlog.title | toUpperCase}}</h2>
-        <article>{{currentBlog.body | snippet}}</article>
       </div>
     </div>
     <div v-else>
@@ -41,7 +40,7 @@ export default {
     }
   },
   computed: {
-    // filteredarray cut from here
+    //filteredblogs cut form here as well
   },
   directives: {
     rainbow: {
@@ -67,7 +66,6 @@ export default {
       return `${value.slice(0, 100)}.....`;
     }
   },
-  //NEW: mixins
   mixins: [searchMixin],
   created() {
     this.fetchData();
