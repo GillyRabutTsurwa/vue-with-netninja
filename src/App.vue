@@ -1,16 +1,17 @@
 <template>
   <div id="app">
     <img class="logo" alt="Vue logo" src="./assets/logo.png" />
-    <!-- <AddBlog /> -->
-    <Blogs />
-    <ListBlogs />
+    <!-- This router-view is responsible of rendering the component based on the specific path (consult routes/routes.js). So we don't need to import and define our components like usual.
+    ie, router-view says "yo, based on the url, render the appropriate component in this place"
+    -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 // import AddBlog from "./components/AddBlog";
-import ShowBlogs from "./components/ShowBlogs";
-import ListBlogs from "./components/ListBlogs";
+// import ShowBlogs from "./components/ShowBlogs";
+// import ListBlogs from "./components/ListBlogs";
 export default {
   name: "App",
   data() {
@@ -18,8 +19,8 @@ export default {
   },
   components: {
     // AddBlog: AddBlog,
-    Blogs: ShowBlogs,
-    ListBlogs: ListBlogs
+    // Blogs: ShowBlogs,
+    // ListBlogs: ListBlogs
   }
 };
 </script>
