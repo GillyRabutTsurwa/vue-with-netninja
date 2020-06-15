@@ -46,6 +46,32 @@ export default {
       });
     }
   },
+  directives: {
+    rainbow: {
+      bind(el, binding) {
+        el.style.color = `#${Math.random()
+          .toString()
+          .slice(2, 8)}`;
+        if (binding.arg === "auto") {
+          setInterval(() => {
+            el.style.color = `#${Math.random()
+              .toString()
+              .slice(2, 8)}`;
+          }, 3000);
+        }
+      }
+    }
+  },
+  // NEW: We are adding our filters and directives from main.js locally
+  //IMPORTANTNOTE: filters are deprecated because methods do the exact same thing
+  filters: {
+    toUpperCase(value) {
+      return value.toUpperCase();
+    },
+    snippet(value) {
+      return `${value.slice(0, 100)}.....`;
+    }
+  },
   created() {
     this.fetchData();
   }
