@@ -1,5 +1,6 @@
 import ShowBlogs from "../components/ShowBlogs";
 import AddBlog from "../components/AddBlog";
+import SingleBlog from "../components/SingleBlog";
 
 export default [{
         path: "/",
@@ -9,4 +10,9 @@ export default [{
         path: "/addBlog",
         component: AddBlog
     },
+    //NEW: Route parametres
+    {
+        path: "/blog/:id",
+        component: SingleBlog
+    }
 ]
