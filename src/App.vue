@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img class="logo" alt="Vue logo" src="./assets/logo.png" />
+    <Tete />
     <!-- This router-view is responsible of rendering the component based on the specific path (consult routes/routes.js). So we don't need to import and define our components like usual.
     ie, router-view says "yo, based on the url, render the appropriate component in this place"
     -->
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import Header from "./components/Header";
 // import AddBlog from "./components/AddBlog";
 // import ShowBlogs from "./components/ShowBlogs";
 // import ListBlogs from "./components/ListBlogs";
@@ -18,6 +19,7 @@ export default {
     return {};
   },
   components: {
+    Tete: Header
     // AddBlog: AddBlog,
     // Blogs: ShowBlogs,
     // ListBlogs: ListBlogs
@@ -33,14 +35,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-.logo {
-  position: fixed;
-  top: 2em;
-  left: 2em;
-  width: 3em;
-  height: 3em;
 }
 
 .btn {
